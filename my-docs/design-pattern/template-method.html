@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>模板方法模式 | Freeisms</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="description" content="记录个人前端技术成长点滴">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/assets/css/0.styles.9efbc543.css" as="style"><link rel="preload" href="/assets/js/app.e45e7f79.js" as="script"><link rel="preload" href="/assets/js/4.1dc261f9.js" as="script"><link rel="preload" href="/assets/js/29.864244b6.js" as="script"><link rel="prefetch" href="/assets/js/10.910e44c4.js"><link rel="prefetch" href="/assets/js/11.3cb7fbc0.js"><link rel="prefetch" href="/assets/js/12.e84e4441.js"><link rel="prefetch" href="/assets/js/13.a20b1e0e.js"><link rel="prefetch" href="/assets/js/14.5bb81eb0.js"><link rel="prefetch" href="/assets/js/15.9ac9c7b5.js"><link rel="prefetch" href="/assets/js/16.e65d6e8b.js"><link rel="prefetch" href="/assets/js/17.3bcb37e9.js"><link rel="prefetch" href="/assets/js/18.238c27dc.js"><link rel="prefetch" href="/assets/js/19.0bf085fb.js"><link rel="prefetch" href="/assets/js/20.af32ca4b.js"><link rel="prefetch" href="/assets/js/21.d7d0a4bf.js"><link rel="prefetch" href="/assets/js/22.fb0bd41c.js"><link rel="prefetch" href="/assets/js/23.e40c513c.js"><link rel="prefetch" href="/assets/js/24.df877caa.js"><link rel="prefetch" href="/assets/js/25.ff943ee7.js"><link rel="prefetch" href="/assets/js/26.6975fab4.js"><link rel="prefetch" href="/assets/js/27.49355cdd.js"><link rel="prefetch" href="/assets/js/28.08ac8c0a.js"><link rel="prefetch" href="/assets/js/30.9fde9cc1.js"><link rel="prefetch" href="/assets/js/31.04c169d6.js"><link rel="prefetch" href="/assets/js/32.57021f58.js"><link rel="prefetch" href="/assets/js/33.09502731.js"><link rel="prefetch" href="/assets/js/34.8a018286.js"><link rel="prefetch" href="/assets/js/35.097f93be.js"><link rel="prefetch" href="/assets/js/36.37ccdfeb.js"><link rel="prefetch" href="/assets/js/37.11976f3e.js"><link rel="prefetch" href="/assets/js/38.98243aad.js"><link rel="prefetch" href="/assets/js/39.a3c78447.js"><link rel="prefetch" href="/assets/js/40.7be6398d.js"><link rel="prefetch" href="/assets/js/41.33d492ee.js"><link rel="prefetch" href="/assets/js/42.f1c675e6.js"><link rel="prefetch" href="/assets/js/43.bbda546b.js"><link rel="prefetch" href="/assets/js/44.2dc401cd.js"><link rel="prefetch" href="/assets/js/45.33bd1151.js"><link rel="prefetch" href="/assets/js/46.b6b09012.js"><link rel="prefetch" href="/assets/js/47.55feb448.js"><link rel="prefetch" href="/assets/js/48.fc9dc909.js"><link rel="prefetch" href="/assets/js/49.fd6d33c4.js"><link rel="prefetch" href="/assets/js/5.ac586c16.js"><link rel="prefetch" href="/assets/js/50.8e33b7f9.js"><link rel="prefetch" href="/assets/js/51.fd278c0a.js"><link rel="prefetch" href="/assets/js/52.fbd66a3b.js"><link rel="prefetch" href="/assets/js/53.f829ac68.js"><link rel="prefetch" href="/assets/js/54.7c7e5ec8.js"><link rel="prefetch" href="/assets/js/55.42e87201.js"><link rel="prefetch" href="/assets/js/56.2301ffbd.js"><link rel="prefetch" href="/assets/js/57.6d5ed1a9.js"><link rel="prefetch" href="/assets/js/58.8dc29eab.js"><link rel="prefetch" href="/assets/js/59.722945c8.js"><link rel="prefetch" href="/assets/js/6.64876e20.js"><link rel="prefetch" href="/assets/js/60.c43354e4.js"><link rel="prefetch" href="/assets/js/61.b9d1ad1d.js"><link rel="prefetch" href="/assets/js/62.d61bfc10.js"><link rel="prefetch" href="/assets/js/63.d84a88b5.js"><link rel="prefetch" href="/assets/js/64.0f25c14d.js"><link rel="prefetch" href="/assets/js/7.d74ac93a.js"><link rel="prefetch" href="/assets/js/8.6c8e2482.js"><link rel="prefetch" href="/assets/js/9.085dc649.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.4e554982.js"><link rel="prefetch" href="/assets/js/vendors~notification.4b668bb8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9efbc543.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Freeisms</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/my-docs/js/" class="nav-link">
+  JavaScript
+</a></div><div class="nav-item"><a href="/my-docs/design-pattern/" class="nav-link router-link-active">
+  设计模式
+</a></div><div class="nav-item"><a href="/my-docs/leetcode/" class="nav-link">
+  LeetCode
+</a></div><div class="nav-item"><a href="/my-docs/library/vue-juejin-comment.html" class="nav-link">
+  开源库
+</a></div><div class="nav-item"><a href="https://www.striveforus.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/Fengfengfeng-up/personal-docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/my-docs/js/" class="nav-link">
+  JavaScript
+</a></div><div class="nav-item"><a href="/my-docs/design-pattern/" class="nav-link router-link-active">
+  设计模式
+</a></div><div class="nav-item"><a href="/my-docs/leetcode/" class="nav-link">
+  LeetCode
+</a></div><div class="nav-item"><a href="/my-docs/library/vue-juejin-comment.html" class="nav-link">
+  开源库
+</a></div><div class="nav-item"><a href="https://www.striveforus.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/Fengfengfeng-up/personal-docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>设计模式</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/my-docs/design-pattern/" aria-current="page" class="sidebar-link">写在前面</a></li><li><a href="/my-docs/design-pattern/singleton.html" class="sidebar-link">单例模式</a></li><li><a href="/my-docs/design-pattern/strategy.html" class="sidebar-link">策略模式</a></li><li><a href="/my-docs/design-pattern/proxy.html" class="sidebar-link">代理模式</a></li><li><a href="/my-docs/design-pattern/iterator.html" class="sidebar-link">迭代器模式</a></li><li><a href="/my-docs/design-pattern/pub-sub.html" class="sidebar-link">发布—订阅模式</a></li><li><a href="/my-docs/design-pattern/command.html" class="sidebar-link">命令模式</a></li><li><a href="/my-docs/design-pattern/composite.html" class="sidebar-link">组合模式</a></li><li><a href="/my-docs/design-pattern/template-method.html" aria-current="page" class="active sidebar-link">模板方法模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/my-docs/design-pattern/template-method.html#传统的模板方法模式" class="sidebar-link">传统的模板方法模式</a></li><li class="sidebar-sub-header"><a href="/my-docs/design-pattern/template-method.html#javascript-中的模板方法模式" class="sidebar-link">JavaScript 中的模板方法模式</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="模板方法模式"><a href="#模板方法模式" class="header-anchor">#</a> 模板方法模式</h1> <p><strong>模板方法模式</strong>是基于继承的一种设计模式，父类封装了子类的算法框架和方法的执行顺序，子类通过继承父类之后，由父类通知子类执行这些方法。</p> <p>模板方法模式由两部分结构组成，第一部分是抽象父类，第二部分是具体的实现子类。通常在抽象父类中封装了子类的算法框架，其中包括一些公共方法和这些方法的执行顺序。子类通过继承抽象父类，不仅继承了整个算法结构，还可以重写父类的方法。</p> <p>在模板方法模式中，通过增加新的子类就可以给系统增加新的功能，并不需要改动抽象父类以及其他子类，符合开放-封闭原则。</p> <h2 id="传统的模板方法模式"><a href="#传统的模板方法模式" class="header-anchor">#</a> 传统的模板方法模式</h2> <p>在类似 Java 的传统面向对象语言中，实现模板方法模式往往需要实现一个抽象类，它由一个模板方法和若干个基本方法构成，然后由具体实现类继承和扩展。</p> <p>沿用书中泡柠檬茶和泡咖啡的例子，可以知道它们都有以下操作步骤：</p> <ol><li>把水煮沸</li> <li>用沸水冲泡原料（泡柠檬茶的原料是茶叶，泡咖啡的原料是咖啡）</li> <li>把冲泡好的饮料倒入杯中</li> <li>往杯中加入调料（泡柠檬茶加入的是柠檬，泡咖啡加入的是牛奶和糖）</li></ol> <p>用 JavaScript 模拟传统语言实现的代码如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 抽象类-饮料</span>
+<span class="token keyword">class</span> <span class="token class-name">Beverage</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 模板方法</span>
+  <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 具体方法-把水煮沸</span>
+  <span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把水煮沸'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 具体方法-把冲泡好的饮料导入杯中</span>
+  <span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把冲泡好的饮料导入杯中'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 抽象方法-用沸水冲泡原料</span>
+  <span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'请在子类中实现对应的抽象方法'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 抽象方法-往杯中加入调料</span>
+  <span class="token function">addCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'请在子类中实现对应的抽象方法'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Coffee</span> <span class="token keyword">extends</span> <span class="token class-name">Beverage</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 重写抽象方法</span>
+  <span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'用沸水冲泡咖啡'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 重写抽象方法</span>
+  <span class="token function">addCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'往杯中加入牛奶和糖'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> coffee <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Coffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+coffee<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 把水煮沸</span>
+<span class="token comment">// 用沸水冲泡咖啡</span>
+<span class="token comment">// 把冲泡好的饮料导入杯中</span>
+<span class="token comment">// 往杯中加入牛奶和糖</span>
+
+<span class="token keyword">class</span> <span class="token class-name">LemonTea</span> <span class="token keyword">extends</span> <span class="token class-name">Beverage</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 重写抽象方法</span>
+  <span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'用沸水冲泡茶叶'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 重写抽象方法</span>
+  <span class="token function">addCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'往杯中加入柠檬'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> lemonTea <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LemonTea</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+lemonTea<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 把水煮沸</span>
+<span class="token comment">// 用沸水冲泡茶叶</span>
+<span class="token comment">// 把冲泡好的饮料导入杯中</span>
+<span class="token comment">// 往杯中加入柠檬</span>
+</code></pre></div><h3 id="钩子方法"><a href="#钩子方法" class="header-anchor">#</a> 钩子方法</h3> <p>在上述例子中，泡柠檬茶和泡咖啡的操作步骤被父类限制，如果我们面对的客人不想加调料，那就尴尬了。</p> <p><strong>钩子方法</strong>可以用来解决这个问题，放置钩子是隔离变化的一种常见手段。我们在往杯中加入调料之前，放置一个钩子函数，然后根据钩子函数的意图执行后续操作，这时子类就可以通过实现自己的钩子函数来达到不加调料的目的。</p> <p>这里我们假定钩子函数的名称为 <code>customWantsCondiments</code>，那么得到一杯不加糖和牛奶的咖啡的实现代码如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 抽象类-饮料</span>
+<span class="token keyword">class</span> <span class="token class-name">Beverage</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 模板方法</span>
+  <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// 判断钩子函数的意图</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">customWantsCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">addCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 具体方法-把水煮沸</span>
+  <span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把水煮沸'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 具体方法-把冲泡好的饮料导入杯中</span>
+  <span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把冲泡好的饮料导入杯中'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 抽象方法-用沸水冲泡原料</span>
+  <span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'请在子类中实现对应的抽象方法'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 抽象方法-往杯中加入调料</span>
+  <span class="token function">addCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'请在子类中实现对应的抽象方法'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 钩子函数</span>
+  <span class="token function">customWantsCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span> <span class="token comment">// 默认要添加牛奶和糖</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Coffee</span> <span class="token keyword">extends</span> <span class="token class-name">Beverage</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 重写抽象方法</span>
+  <span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'用沸水冲泡咖啡'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 重写钩子函数</span>
+  <span class="token function">customWantsCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> coffee <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Coffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+coffee<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 把水煮沸</span>
+<span class="token comment">// 用沸水冲泡咖啡</span>
+<span class="token comment">// 把冲泡好的饮料导入杯中</span>
+</code></pre></div><h2 id="javascript-中的模板方法模式"><a href="#javascript-中的模板方法模式" class="header-anchor">#</a> JavaScript 中的模板方法模式</h2> <p>模板方法模式是为数不多的基于继承的设计模式，但 JavaScript 语言没有提供真正的类式继承，继承是通过对象与对象之间的委托来实现的。因此，在 JavaScript 中，我们往往通过高阶函数来实现模板方法模式。</p> <p>通过高阶函数形式改写后，得到一杯不加牛奶和糖的咖啡的代码如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> Beverage <span class="token operator">=</span> <span class="token punctuation">(</span>
+  <span class="token punctuation">{</span> brew<span class="token punctuation">,</span> addCondiments<span class="token punctuation">,</span> customWantsCondiments <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'必须传递 brew 方法'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">addCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'必须传递 addCondiments 方法'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">customWantsCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">boilWater</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把水煮沸'</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">pourInCup</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'把冲泡好的饮料导入杯中'</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">F</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token class-name">F</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">init</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">boilWater</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">pourInCup</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">customWantsCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">addCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token constant">F</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> Coffee <span class="token operator">=</span> <span class="token function">Beverage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function">brew</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'用沸水冲泡咖啡'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function">customWantsCondiments</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> coffee <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Coffee</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+coffee<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 把水煮沸</span>
+<span class="token comment">// 用沸水冲泡咖啡</span>
+<span class="token comment">// 把冲泡好的饮料导入杯中</span>
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/Fengfengfeng-up/personal-docs/edit/main/docs/my-docs/design-pattern/template-method.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">3/3/2021, 1:38:11 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/my-docs/design-pattern/composite.html" class="prev">
+        组合模式
+      </a></span> <!----></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.e45e7f79.js" defer></script><script src="/assets/js/4.1dc261f9.js" defer></script><script src="/assets/js/29.864244b6.js" defer></script>
+  </body>
+</html>

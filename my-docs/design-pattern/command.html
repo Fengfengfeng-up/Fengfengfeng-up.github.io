@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>命令模式 | Freeisms</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="description" content="记录个人前端技术成长点滴">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/assets/css/0.styles.9efbc543.css" as="style"><link rel="preload" href="/assets/js/app.e45e7f79.js" as="script"><link rel="preload" href="/assets/js/4.1dc261f9.js" as="script"><link rel="preload" href="/assets/js/22.fb0bd41c.js" as="script"><link rel="prefetch" href="/assets/js/10.910e44c4.js"><link rel="prefetch" href="/assets/js/11.3cb7fbc0.js"><link rel="prefetch" href="/assets/js/12.e84e4441.js"><link rel="prefetch" href="/assets/js/13.a20b1e0e.js"><link rel="prefetch" href="/assets/js/14.5bb81eb0.js"><link rel="prefetch" href="/assets/js/15.9ac9c7b5.js"><link rel="prefetch" href="/assets/js/16.e65d6e8b.js"><link rel="prefetch" href="/assets/js/17.3bcb37e9.js"><link rel="prefetch" href="/assets/js/18.238c27dc.js"><link rel="prefetch" href="/assets/js/19.0bf085fb.js"><link rel="prefetch" href="/assets/js/20.af32ca4b.js"><link rel="prefetch" href="/assets/js/21.d7d0a4bf.js"><link rel="prefetch" href="/assets/js/23.e40c513c.js"><link rel="prefetch" href="/assets/js/24.df877caa.js"><link rel="prefetch" href="/assets/js/25.ff943ee7.js"><link rel="prefetch" href="/assets/js/26.6975fab4.js"><link rel="prefetch" href="/assets/js/27.49355cdd.js"><link rel="prefetch" href="/assets/js/28.08ac8c0a.js"><link rel="prefetch" href="/assets/js/29.864244b6.js"><link rel="prefetch" href="/assets/js/30.9fde9cc1.js"><link rel="prefetch" href="/assets/js/31.04c169d6.js"><link rel="prefetch" href="/assets/js/32.57021f58.js"><link rel="prefetch" href="/assets/js/33.09502731.js"><link rel="prefetch" href="/assets/js/34.8a018286.js"><link rel="prefetch" href="/assets/js/35.097f93be.js"><link rel="prefetch" href="/assets/js/36.37ccdfeb.js"><link rel="prefetch" href="/assets/js/37.11976f3e.js"><link rel="prefetch" href="/assets/js/38.98243aad.js"><link rel="prefetch" href="/assets/js/39.a3c78447.js"><link rel="prefetch" href="/assets/js/40.7be6398d.js"><link rel="prefetch" href="/assets/js/41.33d492ee.js"><link rel="prefetch" href="/assets/js/42.f1c675e6.js"><link rel="prefetch" href="/assets/js/43.bbda546b.js"><link rel="prefetch" href="/assets/js/44.2dc401cd.js"><link rel="prefetch" href="/assets/js/45.33bd1151.js"><link rel="prefetch" href="/assets/js/46.b6b09012.js"><link rel="prefetch" href="/assets/js/47.55feb448.js"><link rel="prefetch" href="/assets/js/48.fc9dc909.js"><link rel="prefetch" href="/assets/js/49.fd6d33c4.js"><link rel="prefetch" href="/assets/js/5.ac586c16.js"><link rel="prefetch" href="/assets/js/50.8e33b7f9.js"><link rel="prefetch" href="/assets/js/51.fd278c0a.js"><link rel="prefetch" href="/assets/js/52.fbd66a3b.js"><link rel="prefetch" href="/assets/js/53.f829ac68.js"><link rel="prefetch" href="/assets/js/54.7c7e5ec8.js"><link rel="prefetch" href="/assets/js/55.42e87201.js"><link rel="prefetch" href="/assets/js/56.2301ffbd.js"><link rel="prefetch" href="/assets/js/57.6d5ed1a9.js"><link rel="prefetch" href="/assets/js/58.8dc29eab.js"><link rel="prefetch" href="/assets/js/59.722945c8.js"><link rel="prefetch" href="/assets/js/6.64876e20.js"><link rel="prefetch" href="/assets/js/60.c43354e4.js"><link rel="prefetch" href="/assets/js/61.b9d1ad1d.js"><link rel="prefetch" href="/assets/js/62.d61bfc10.js"><link rel="prefetch" href="/assets/js/63.d84a88b5.js"><link rel="prefetch" href="/assets/js/64.0f25c14d.js"><link rel="prefetch" href="/assets/js/7.d74ac93a.js"><link rel="prefetch" href="/assets/js/8.6c8e2482.js"><link rel="prefetch" href="/assets/js/9.085dc649.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.4e554982.js"><link rel="prefetch" href="/assets/js/vendors~notification.4b668bb8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9efbc543.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Freeisms</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/my-docs/js/" class="nav-link">
+  JavaScript
+</a></div><div class="nav-item"><a href="/my-docs/design-pattern/" class="nav-link router-link-active">
+  设计模式
+</a></div><div class="nav-item"><a href="/my-docs/leetcode/" class="nav-link">
+  LeetCode
+</a></div><div class="nav-item"><a href="/my-docs/library/vue-juejin-comment.html" class="nav-link">
+  开源库
+</a></div><div class="nav-item"><a href="https://www.striveforus.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/Fengfengfeng-up/personal-docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/my-docs/js/" class="nav-link">
+  JavaScript
+</a></div><div class="nav-item"><a href="/my-docs/design-pattern/" class="nav-link router-link-active">
+  设计模式
+</a></div><div class="nav-item"><a href="/my-docs/leetcode/" class="nav-link">
+  LeetCode
+</a></div><div class="nav-item"><a href="/my-docs/library/vue-juejin-comment.html" class="nav-link">
+  开源库
+</a></div><div class="nav-item"><a href="https://www.striveforus.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/Fengfengfeng-up/personal-docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>设计模式</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/my-docs/design-pattern/" aria-current="page" class="sidebar-link">写在前面</a></li><li><a href="/my-docs/design-pattern/singleton.html" class="sidebar-link">单例模式</a></li><li><a href="/my-docs/design-pattern/strategy.html" class="sidebar-link">策略模式</a></li><li><a href="/my-docs/design-pattern/proxy.html" class="sidebar-link">代理模式</a></li><li><a href="/my-docs/design-pattern/iterator.html" class="sidebar-link">迭代器模式</a></li><li><a href="/my-docs/design-pattern/pub-sub.html" class="sidebar-link">发布—订阅模式</a></li><li><a href="/my-docs/design-pattern/command.html" aria-current="page" class="active sidebar-link">命令模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/my-docs/design-pattern/command.html#传统的命令模式" class="sidebar-link">传统的命令模式</a></li><li class="sidebar-sub-header"><a href="/my-docs/design-pattern/command.html#javascript-中的命令模式" class="sidebar-link">JavaScript 中的命令模式</a></li></ul></li><li><a href="/my-docs/design-pattern/composite.html" class="sidebar-link">组合模式</a></li><li><a href="/my-docs/design-pattern/template-method.html" class="sidebar-link">模板方法模式</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="命令模式"><a href="#命令模式" class="header-anchor">#</a> 命令模式</h1> <p><strong>命令模式</strong>是将请求以命令的形式包裹在对象中，并传给调用对象，调用对象寻找可以处理该命令的合适的对象，并把该命令传给相应的对象，该对象执行命令。</p> <p>命令模式将请求封装成 <code>command</code> 对象，该对象可以在程序中四处传递，请求发送者不必直接与请求接收者产生联系，因此解开了请求发送者和请求接收者之间的耦合关系。相对于过程化的请求调用，<code>command</code> 对象拥有更长的生命周期。此外，命令模式还支持撤销、排队等操作。</p> <h2 id="传统的命令模式"><a href="#传统的命令模式" class="header-anchor">#</a> 传统的命令模式</h2> <p>假设有一个用户界面程序，该用户界面上有几个按钮，点击按钮后，必须向某些负责具体行为的对象发送请求，这些对象就是请求的接收者。起初并不清楚接收者是什么对象，也不知道接收者会做什么，所以需要借助命令对象的帮助解开按钮与负责具体行为的对象之间的耦合。</p> <p>模拟传统面向对象语言的实现如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> btn1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'btn1'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> btn2 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'btn2'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> btn3 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'btn3'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">setCommand</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">button<span class="token punctuation">,</span> command</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 负责往按钮上安装命令，点击该按钮时，会默认调用 command 对象的 execute() 方法</span>
+  button<span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> command<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 菜单</span>
+<span class="token keyword">const</span> MenuBar <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">refresh</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'刷新菜单目录'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 子菜单</span>
+<span class="token keyword">const</span> SubMenu <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">add</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'增加子菜单'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">del</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'删除子菜单'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 刷新菜单目录命令类</span>
+<span class="token keyword">class</span> <span class="token class-name">RefreshMenuBarCommend</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">receiver</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>receiver <span class="token operator">=</span> receiver
+  <span class="token punctuation">}</span>
+
+  <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>receiver<span class="token punctuation">.</span><span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 增加子菜单命令类</span>
+<span class="token keyword">class</span> <span class="token class-name">AddSubMenuCommend</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">receiver</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>receiver <span class="token operator">=</span> receiver
+  <span class="token punctuation">}</span>
+
+  <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>receiver<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 删除子菜单命令类</span>
+<span class="token keyword">class</span> <span class="token class-name">DelSubMenuCommend</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">receiver</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>receiver <span class="token operator">=</span> receiver
+  <span class="token punctuation">}</span>
+
+  <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>receiver<span class="token punctuation">.</span><span class="token function">del</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">// 将命令接收者传入 command 对象</span>
+<span class="token keyword">const</span> refreshMenuBarCommend <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RefreshMenuBarCommend</span><span class="token punctuation">(</span>MenuBar<span class="token punctuation">)</span>
+<span class="token keyword">const</span> addSubMenuCommend <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AddSubMenuCommend</span><span class="token punctuation">(</span>SubMenu<span class="token punctuation">)</span>
+<span class="token keyword">const</span> delSubMenuCommend <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DelSubMenuCommend</span><span class="token punctuation">(</span>SubMenu<span class="token punctuation">)</span>
+
+<span class="token comment">// 将 command 对象安装到对应的 button 上</span>
+<span class="token function">setCommand</span><span class="token punctuation">(</span>btn1<span class="token punctuation">,</span> refreshMenuBarCommend<span class="token punctuation">)</span>
+<span class="token function">setCommand</span><span class="token punctuation">(</span>btn2<span class="token punctuation">,</span> addSubMenuCommend<span class="token punctuation">)</span>
+<span class="token function">setCommand</span><span class="token punctuation">(</span>btn3<span class="token punctuation">,</span> delSubMenuCommend<span class="token punctuation">)</span>
+</code></pre></div><h2 id="javascript-中的命令模式"><a href="#javascript-中的命令模式" class="header-anchor">#</a> JavaScript 中的命令模式</h2> <p>JavaScript 作为将函数作为一等对象的语言，跟策略模式一样，命令模式也早已融入到语言之中。在面向对象设计中，命令模式的接收者被当成 <code>command</code> 对象的属性保存起来，同时约定执行命令的操作调用 <code>command.execute()</code> 方法。在 JavaScript 中，利用闭包和回调函数可以更加轻松实现命令模式，接收者被封闭在闭包产生的环境中，执行命令只需要执行回调函数即可。</p> <p>用闭包实现的命令模式的代码如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">setCommend</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">button<span class="token punctuation">,</span> command</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  button<span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> command<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> MenuBar <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">refresh</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'刷新菜单界面'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">RefreshMenuBarCommend</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">receiver</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">execute</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> receiver<span class="token punctuation">.</span><span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> refreshMenuBarCommend <span class="token operator">=</span> <span class="token function">RefreshMenuBarCommend</span><span class="token punctuation">(</span>MenuBar<span class="token punctuation">)</span>
+<span class="token function">setCommend</span><span class="token punctuation">(</span>btn1<span class="token punctuation">,</span> refreshMenuBarCommend<span class="token punctuation">)</span>
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/Fengfengfeng-up/personal-docs/edit/main/docs/my-docs/design-pattern/command.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">3/3/2021, 1:42:33 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/my-docs/design-pattern/pub-sub.html" class="prev">
+        发布—订阅模式
+      </a></span> <span class="next"><a href="/my-docs/design-pattern/composite.html">
+        组合模式
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.e45e7f79.js" defer></script><script src="/assets/js/4.1dc261f9.js" defer></script><script src="/assets/js/22.fb0bd41c.js" defer></script>
+  </body>
+</html>
